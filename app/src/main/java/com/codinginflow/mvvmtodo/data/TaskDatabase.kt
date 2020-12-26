@@ -19,14 +19,6 @@ abstract class TaskDatabase : RoomDatabase() {
     ) : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
-
-            val dao = database.get().taskDao()
-
-            applicationScope.launch {
-                dao.insert(Task(name = "Wash dishes"))
-                dao.insert(Task(name = "Cooking", isImportant = true))
-                dao.insert(Task(name = "Buy HDMI Cable", isCompleted = true))
-            }
         }
     }
 }
