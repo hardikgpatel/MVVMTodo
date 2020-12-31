@@ -6,8 +6,10 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.codinginflow.mvvmtodo.R
 import com.codinginflow.mvvmtodo.data.Task
 import com.codinginflow.mvvmtodo.databinding.ItemTaskBinding
+import kotlin.coroutines.coroutineContext
 
 class TaskAdapter(private val listener: OnItemClickListener) : ListAdapter<Task, TaskAdapter.TaskViewHolder>(DiffCallback()) {
     inner class TaskViewHolder(private val binding: ItemTaskBinding) :
@@ -36,6 +38,13 @@ class TaskAdapter(private val listener: OnItemClickListener) : ListAdapter<Task,
                 tvTaskName.text = task.name
                 tvTaskName.paint.isStrikeThruText = task.isCompleted
                 ivImportant.isVisible = task.isImportant
+                if(task.isImportant) {
+                    viewPriority.setBackgroundColor(root.context.resources.getColor(R.color.design_default_color_secondary_variant))
+                } else {
+                    viewPriority.setBackgroundColor(root.context.resources.getColor(R.color.design_default_color_secondary))
+                }
+
+
             }
         }
     }

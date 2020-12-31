@@ -2,8 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -12,19 +15,47 @@
         android:minHeight="0dp"
         android:minWidth="0dp"/>
 
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_task_name"
-        android:maxLines="1"
         android:layout_weight="1"
-        android:ellipsize="end" />
+        android:layout_gravity="center"
+        app:cardCornerRadius="8dp"
+        android:layout_marginLeft="8dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_priority"
-        android:id="@+id/iv_important"
-        android:visibility="gone"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:id="@+id/view_priority"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_task_name"
+                tools:text="Task Name"
+                android:maxLines="1"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:layout_margin="8dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_priority"
+                android:id="@+id/iv_important"
+                android:layout_marginRight="3dp"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
